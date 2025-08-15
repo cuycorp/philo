@@ -13,7 +13,9 @@ SRCS = main.c \
 	   philo_state.c \
 	   ft_free_philo.c \
 	   set_philos.c \
-	   simulation_finished.c
+	   simulation_finished.c \
+	   precise_usleep.c \
+	   philo_log.c
 
 
 OBJ_DIR = objects

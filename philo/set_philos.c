@@ -17,7 +17,7 @@ static int	one_philo(t_table *table)
 	if (table->n_philos == 1)
 	{
 		philo_fork(table->philo);
-		usleep(table->time_to_die * 1000);
+		precise_usleep_interruptible(table->time_to_die * 1000, table);
 		philo_dead(table->philo);
 		return (1);
 	}

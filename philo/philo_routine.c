@@ -22,7 +22,7 @@ void	delay_odd_philo(t_philo *philo)
 	if (nb_meal > 0)
 		return ;
 	if (philo->id % 2 == 0)
-		usleep(philo->table->time_to_eat * 1000);
+		precise_usleep_interruptible(philo->table->time_to_eat * 1000, philo->table);
 }
 
 static void take_fork_and_eat(t_philo *philo, int fork, int next_fork)

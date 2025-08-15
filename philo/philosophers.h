@@ -48,13 +48,23 @@ typedef struct s_philo
 	t_table				*table;
 }						t_philo;
 
+typedef enum e_philo_log
+{
+	THINK,
+	SLEEP,
+	EAT,
+	FORK,
+	DEAD,
+}						t_philo_log;
+
 /* CHECK_ARGUMENTS */
 int						check_argument(int argc, char **argv);
 
 /* TIME */
 long long				get_time_ms(t_table *table);
 long long				get_current_time(t_table *table);
-void					precise_usleep(long usec, t_table *table);
+// void					precise_usleep(long usec);
+void					precise_usleep_interruptible(long usec, t_table *table);
 
 /* INIT */
 t_table					*ft_init_all(char **argv);
@@ -79,7 +89,9 @@ void					philo_think(t_philo *philo);
 void					philo_sleep(t_philo *philo);
 void					philo_eat(t_philo *philo);
 void					philo_fork(t_philo *philo);
-void					philo_dead(t_philo *philo);
+// void					philo_dead(t_philo *philo);
+int						philo_dead(t_philo *philo);
+void					philo_log(t_philo *philo, t_philo_log log_type);
 
 /* MONITOR_ROUTINE */
 void					*monitor_routine(void *input);

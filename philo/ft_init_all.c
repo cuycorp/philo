@@ -12,12 +12,6 @@
 
 #include "philosophers.h"
 
-
-/*
--> Initializes table with the settings of the simulation
--> Initializes the mutex variables that are like the vitality 
-   signs of the simulation
-*/
 static t_table	*init_table(char **argv)
 {
 	t_table	*table;
@@ -40,10 +34,6 @@ static t_table	*init_table(char **argv)
 	return (table);
 }
 
-/*
--> Resets the count variables
--> Initializes fork mutex
-*/
 static t_philo	*init_philo(t_table *table)
 {
 	t_philo	*philo;
@@ -64,11 +54,6 @@ static t_philo	*init_philo(t_table *table)
 	return (philo);
 }
 
-
-/*
--> Init table and philo 
--> Initialize gettimeofday
-*/
 t_table	*ft_init_all(char **argv)
 {
 	t_table *table;

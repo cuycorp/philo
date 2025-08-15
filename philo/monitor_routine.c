@@ -30,6 +30,27 @@ static int	check_meal(t_table *table)
 	return (1);
 }
 
+int	check_death(t_table *table)
+{
+	int	i;
+
+	i = -1;
+	while (++i < table->n_philos)
+	{
+		pthread_mutex_lock(&table->last_meal_time);
+		if (table->time_to_die <= get_current_time(table)
+			- table->philo[i].last_meal_time)
+		{
+			pthread_mutex_unlock(&table->last_meal_time);
+			//precise_usleep(100);
+			return (philo_dead(&table->philo[i]));
+		}
+		pthread_mutex_unlock(&table->last_meal_time);
+	}
+	return (0);
+}
+
+/*
 static int	check_death(t_table *table)
 {
 	int	i;
@@ -47,11 +68,11 @@ static int	check_death(t_table *table)
 	}
 	return (0);
 }
-
+*/
 
 void	*monitor_routine(void *input)
 {
-	t_table *table;
+	t_table	*table;
 
 	table = (t_table *)input;
 	while (1)
@@ -61,10 +82,11 @@ void	*monitor_routine(void *input)
 			pthread_mutex_lock(&table->routine);
 			table->stop_routine = 1;
 			pthread_mutex_unlock(&table->routine);
+			break;
 		}
 		if (table->stop_routine == 1)
 			break ;
-		usleep(1000);
+		precise_usleep_interruptible(1000, table);
 	}
 	return (NULL);
 }

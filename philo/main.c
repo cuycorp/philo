@@ -25,3 +25,20 @@ int	main(int argc, char **argv)
 	ft_free_philo(&table);
 	return (0);
 }
+
+
+/*
+alternatives for check_death and philo_dead
+test
+	passed
+		./philo 3 830 200 200
+		./philo 4 410 200 100
+		
+	failed
+		./philo 3 830 300 200 shouldn't die
+		./philo 193 500 200 100 shouldn't die
+		./philo 5 800 4000 200 takes a while to die 
+
+helgrind
+	valgrind --tool=helgrind --history-level=approx
+*/
