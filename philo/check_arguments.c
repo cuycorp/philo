@@ -52,6 +52,7 @@ int	check_range(char **argv)
 	}
 	return (1);
 }
+
 int	check_argument(int argc, char **argv)
 {
 	if (argc != 5 && argc != 6)

@@ -19,7 +19,6 @@ void	precise_usleep_interruptible(long usec, t_table *table)
 	long			elapsed;
 	long			chunk;
 
-	
 	chunk = 1000;
 	gettimeofday(&start, NULL);
 	while (1)

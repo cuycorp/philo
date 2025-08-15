@@ -24,26 +24,27 @@ static int	one_philo(t_table *table)
 	return (0);
 }
 
-void    set_philos(t_table *table)
+void	set_philos(t_table *table)
 {
-    int i;
-    i = 0;
-    pthread_t monitor;
+	int			i;
+	pthread_t	monitor;
 
-    if (one_philo(table) == 1)
+	i = 0;
+	if (one_philo(table) == 1)
 		return ;
-    pthread_create(&monitor, NULL, monitor_routine, (void *)table);
-    while(i < table->n_philos)
-    {
-        pthread_create(&table->philo[i].thread, NULL, philo_routine, (void *)&table->philo[i]);
-        i++;
-    }
-    i = 0;
-    pthread_join(monitor, NULL);
-    while(i < table->n_philos)
-    {
-        pthread_join(table->philo[i].thread, NULL);
-        i++;
-    }
+	pthread_create(&monitor, NULL, monitor_routine, (void *)table);
+	while (i < table->n_philos)
+	{
+		pthread_create(&table->philo[i].thread, NULL, philo_routine,
+			(void *)&table->philo[i]);
+		i++;
+	}
+	i = 0;
+	pthread_join(monitor, NULL);
+	while (i < table->n_philos)
+	{
+		pthread_join(table->philo[i].thread, NULL);
+		i++;
+	}
 	ft_putstr_fd("\033[0;37m", 1);
 }

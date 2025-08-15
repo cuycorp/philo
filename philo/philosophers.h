@@ -29,10 +29,10 @@ typedef struct s_table
 	int					time_to_sleep;
 	int					time_to_die;
 	int					max_meal;
-	int stop_routine; // flag
+	int					stop_routine;
 	t_philo				*philo;
 	struct timeval		start_time;
-	pthread_mutex_t time; // mutex
+	pthread_mutex_t		time;
 	pthread_mutex_t		print;
 	pthread_mutex_t		routine;
 	pthread_mutex_t		num_meal;
@@ -89,7 +89,7 @@ void					philo_think(t_philo *philo);
 void					philo_sleep(t_philo *philo);
 void					philo_eat(t_philo *philo);
 void					philo_fork(t_philo *philo);
-// void					philo_dead(t_philo *philo);
+/* void					philo_dead(t_philo *philo); */
 int						philo_dead(t_philo *philo);
 void					philo_log(t_philo *philo, t_philo_log log_type);
 

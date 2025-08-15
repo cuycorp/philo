@@ -56,7 +56,8 @@ static t_philo	*init_philo(t_table *table)
 
 t_table	*ft_init_all(char **argv)
 {
-	t_table *table;
+	t_table	*table;
+
 	table = init_table(argv);
 	init_philo(table);
 	gettimeofday(&table->start_time, NULL);
