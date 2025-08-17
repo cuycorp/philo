@@ -42,7 +42,6 @@ int	check_death(t_table *table)
 			- table->philo[i].last_meal_time)
 		{
 			pthread_mutex_unlock(&table->last_meal_time);
-			// precise_usleep(100);
 			return (philo_dead(&table->philo[i]));
 		}
 		pthread_mutex_unlock(&table->last_meal_time);

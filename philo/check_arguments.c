@@ -61,6 +61,5 @@ int	check_argument(int argc, char **argv)
 		return (write(2, "Error\nWrong time range\n", 23), 0);
 	if (is_all_numbers(argv) == 0)
 		return (write(2, "Error\nOnly number is accepted\n", 30), 0);
-	write(1, "EVERYTHING IS GOOD\n", 19);
 	return (1);
 }
